@@ -1,4 +1,4 @@
-# Automatic test generation for monoliths
+# .codegen - Automatic test generation for your projects
 [![Gem Version](https://badge.fury.io/rb/dotcodegen.svg)](https://badge.fury.io/rb/dotcodegen) [![Test Coverage](https://api.codeclimate.com/v1/badges/8a9e8ffdf8f3c5322196/test_coverage)](https://codeclimate.com/github/ferrucc-io/dotcodegen/test_coverage)
 
 
