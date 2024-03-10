@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.1.1] - 2024-03-10
+
+- Fix bug where the gemspec was excluding the `lib` directory from the gem. ([#1](https://github.com/ferrucc-io/dotcodegen/pull/1))
+
 ## [0.1.0] - 2024-03-10
 
 - Initial release
