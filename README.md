@@ -12,7 +12,7 @@ We're using this tool to speed up writing tests for our monolith at [June](https
 1. Install our CLI by running:
 
 ```bash
-brew tap ferrucc-io/dotcodegen
+brew tap ferrucc-io/dotcodegen https://github.com/ferrucc-io/dotcodegen
 brew install dotcodegen
 ```
 
