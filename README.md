@@ -9,11 +9,17 @@ We're using this tool to speed up writing tests for our monolith at [June](https
 ## Get started
 
 
-1. Install our CLI by running:
+1. Install our CLI via Homebrew:
 
 ```bash
 brew tap ferrucc-io/dotcodegen-tap
 brew install dotcodegen
+```
+
+Or via RubyGems, this requires Ruby 3.3.0:
+
+```bash
+gem install dotcodegen
 ```
 
 2. Initialise the `.codegen` directory in your codebase:
