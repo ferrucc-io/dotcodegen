@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
+    name: Tests ${{ matrix.ruby }}
     strategy:
       matrix:
         ruby:
@@ -23,5 +23,13 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - name: Run the default task
-      run: bundle exec rake
+    - name: Set up Code Climate test reporter
+      uses: paambaati/codeclimate-action@v3.0.0
+      env:
+        CC_TEST_REPORTER_ID: 56d2e4890ee24451b85050b0364f1d1aa92462cdd296dfb4dd38928427e3ce93
+      with:
+        coverageCommand: bundle exec rake spec
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rake spec
