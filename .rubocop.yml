@@ -1,0 +1,13 @@
+AllCops:
+  TargetRubyVersion: 3.3.0
+  Exclude:
+    - "spec/**/*"
+
+Documentation:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false

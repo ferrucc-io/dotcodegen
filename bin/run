@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# The program gets in as an argument the full file path and the matchers config file
+# Usage: ruby scripts/create_test_file.rb client/app/components/feature.tsx --openai_key sk42424242
+
+require_relative '../lib/dotcodegen/cli'
+
+Dotcodegen::CLI.run(ARGV)
