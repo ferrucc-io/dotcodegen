@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
+    name: Tests ${{ matrix.ruby }}
     strategy:
       matrix:
         ruby:
@@ -28,9 +28,8 @@ jobs:
       env:
         CC_TEST_REPORTER_ID: 56d2e4890ee24451b85050b0364f1d1aa92462cdd296dfb4dd38928427e3ce93
       with:
-        coverageCommand: bundle exec rake test
-        debug: true
+        coverageCommand: bundle exec rake spec
     - name: Install dependencies
       run: bundle install
     - name: Run tests
-      run: bundle exec rake test
+      run: bundle exec rake spec
