@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir.chdir(__dir__) do
     `git ls-files -z`.split("\x0").reject do |f|
       (File.expand_path(f) == __FILE__) ||
-        f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
+        f.start_with?(*%w[bin/ test/ spec/ features/ .git .github .codegen .rspec .rubocop.yml .simplecov appveyor Gemfile Rakefile])
     end
   end
   spec.bindir = 'exe'
@@ -32,8 +32,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'dotenv'
   spec.add_dependency 'front_matter_parser'
-  spec.add_dependency 'optparse'
-  spec.add_dependency 'ostruct'
   spec.add_dependency 'ruby-openai'
 
   # For more information and examples about making a new gem, check out our
