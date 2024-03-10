@@ -1,10 +1,14 @@
 # Automatic test generation for monoliths
+[![Gem Version](https://badge.fury.io/rb/dotcodegen.svg)](https://badge.fury.io/rb/dotcodegen) [![Test Coverage](https://api.codeclimate.com/v1/badges/8a9e8ffdf8f3c5322196/test_coverage)](https://codeclimate.com/github/ferrucc-io/dotcodegen/test_coverage)
+
 
 Never write a test from scratch again. Automatically generate tests for any file you open in your codebase.
 
 Keep your team up to date with the latest best practices and conventions you adopt. Customize the templates to fit your team's needs.
 
-We're using this tool to speed up writing tests for our monolith at [June](https://june.so). We open sourced it so you can use it too.
+We've built this tool internally to speed up writing tests for our monolith at [June](https://june.so). The main idea is that across your codebase, you can have a set of instructions that are used to generate tests. These templates are configurable so no matter what framework or language your current file is in, you can generate tests that fit your team's needs.
+
+Now we're open-sourcing it so you can use it too.
 
 https://github.com/ferrucc-io/dotcodegen/assets/8315559/aca74a87-5123-4305-88ff-cc3be3f34a9f
 
