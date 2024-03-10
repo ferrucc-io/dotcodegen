@@ -75,6 +75,8 @@ The extension uses AI to generate tests for any file you open in your codebase. 
 
 ## Contributing
 
+If you want to add some default templates for your language, feel free to open a PR. See the [config/default](./config/default) directory for the ones we have already.
+
 Bug reports and pull requests are welcome on GitHub at https://github.com/ferrucc-io/dotcodegen.
 
 ## Development
