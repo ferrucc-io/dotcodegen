@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dotcodegen (0.1.0)
+    dotcodegen (0.1.1)
       dotenv
       front_matter_parser
       optparse
