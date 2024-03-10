@@ -6,8 +6,7 @@ Keep your team up to date with the latest best practices and conventions you ado
 
 We're using this tool to speed up writing tests for our monolith at [June](https://june.so). We open sourced it so you can use it too.
 
-![](https://github.com/ferrucc-io/dotcodegen/assets/8315559/c2b190db-eb18-4ba2-9bce-61ce1da222f0)
-
+https://github.com/ferrucc-io/dotcodegen/assets/8315559/aca74a87-5123-4305-88ff-cc3be3f34a9f
 
 
 ## Get started
