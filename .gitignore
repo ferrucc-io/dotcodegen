@@ -16,4 +16,4 @@ coverage.data
 
 .DS_Store
 .env
-dotcodegen.gem
+*.gem

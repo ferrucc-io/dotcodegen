@@ -12,8 +12,9 @@ RSpec.describe Dotcodegen::TestCodeGenerator do
   end
   let(:file_to_test_path) { 'spec/fixtures/labels_controller.rb' }
   let(:openai_key) { 'test_openai_key' }
+  let(:openai_org_id) { 'test_openai_org_id' }
   let(:code_generator_instance) do
-    described_class.new(config:, file_to_test_path:, openai_key:)
+    described_class.new(config:, file_to_test_path:, openai_key:, openai_org_id:)
   end
 
   describe '#test_prompt' do

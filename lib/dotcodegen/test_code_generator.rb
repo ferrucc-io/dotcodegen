@@ -3,12 +3,13 @@
 require 'openai'
 module Dotcodegen
   class TestCodeGenerator
-    attr_reader :config, :file_to_test_path, :openai_key
+    attr_reader :config, :file_to_test_path, :openai_key, :openai_org_id
 
-    def initialize(config:, file_to_test_path:, openai_key:)
+    def initialize(config:, file_to_test_path:, openai_key:, openai_org_id:)
       @config = config
       @file_to_test_path = file_to_test_path
       @openai_key = openai_key
+      @openai_org_id = openai_org_id
     end
 
     def generate_test_code
@@ -55,7 +56,7 @@ module Dotcodegen
     def openai_client
       @openai_client ||= OpenAI::Client.new(
         access_token: openai_key,
-        organization_id: 'org-4nA9FJ8NajsLJ2fbHRAw7MLI'
+        organization_id: openai_org_id
       )
     end
   end

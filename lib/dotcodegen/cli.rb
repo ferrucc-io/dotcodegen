@@ -22,11 +22,10 @@ module Dotcodegen
       Dotenv.load unless defined?($running_tests) && $running_tests
       options = parse(args)
       return version if options.version
-
       return Init.run if options.init
 
       matchers = load_matchers('.codegen/instructions')
-      TestFileGenerator.new(file_path: options.file_path, matchers:, openai_key: options.openai_key).run
+      TestFileGenerator.new(file_path: options.file_path, matchers:, openai_key: options.openai_key, openai_org_id: options.openai_org_id).run
     end
 
     def self.version
@@ -44,8 +43,8 @@ module Dotcodegen
     def self.build_option_parser(options)
       OptionParser.new do |opts|
         opts.banner = 'Usage: dotcodegen [options] file_path'
-
         opts.on('--openai_key KEY', 'OpenAI API Key') { |key| options.openai_key = key }
+        opts.on('--openai_org_id Org_Id', 'OpenAI Organisation Id') { |key| options.openai_org_id = key }
         opts.on('--init', 'Initialize a .codegen configuration in the current directory') { options.init = true }
         opts.on('--version', 'Show version') { options.version = true }
         opts.on_tail('-h', '--help', 'Show this message') do
@@ -61,12 +60,17 @@ module Dotcodegen
 
       validate_file_path(args, opt_parser)
       options.file_path = args.shift
-
       options.openai_key ||= ENV['OPENAI_KEY']
+      options.openai_org_id ||= ENV['OPENAI_ORG_ID']
 
-      return unless options.openai_key.to_s.strip.empty?
+      missing_keys = %w[openai_key openai_org_id].select { |required_key| options.send(required_key).to_s.strip.empty? }
 
-      puts 'Error: Missing --openai_key flag or OPENAI_KEY environment variable.'
+      return if missing_keys.empty?
+
+      missing_keys.each do |missing_key|
+        puts "Error: Missing --#{missing_key} flag or #{missing_key.upcase} environment variable."
+      end
+
       puts opt_parser
       exit 1
     end

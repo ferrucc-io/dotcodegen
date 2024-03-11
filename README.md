@@ -46,7 +46,7 @@ codegen --init
 4. Run the codegen command in your terminal:
 
 ```bash
-codegen path/to/the/file/you/want/to/test --openai_key <your_openai_key>
+codegen path/to/the/file/you/want/to/test --openai_key <your_openai_key> --openai_org_id <your_openai_organisation_id>
 ```
 
 
