@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'openai'
+require_relative 'format_output'
+
 module Dotcodegen
   class TestCodeGenerator
     attr_reader :config, :file_to_test_path, :openai_key
