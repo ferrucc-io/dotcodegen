@@ -31,12 +31,6 @@ gem install dotcodegen
 
 2. Initialise the `.codegen` directory in your codebase:
 
-Via Python
-```bash
-codegen init
-```
-
-Via Ruby
 ```bash
 codegen --init
 ```
