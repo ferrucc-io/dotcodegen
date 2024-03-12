@@ -14,7 +14,7 @@ RSpec.describe Dotcodegen::TestCodeGenerator do
   let(:openai_key) { 'test_openai_key' }
   let(:openai_org_id) { 'test_openai_org_id' }
   let(:code_generator_instance) do
-    described_class.new(config:, file_to_test_path:, openai_key:, openai_org_id:)
+    described_class.new(config:, file_to_test_path:, openai_key:)
   end
 
   describe '#test_prompt' do

@@ -7,7 +7,7 @@ module Dotcodegen
   class TestFileGenerator
     attr_reader :file_path, :matchers, :openai_key, :openai_org_id
 
-    def initialize(file_path:, matchers:, openai_key:, openai_org_id:)
+    def initialize(file_path:, matchers:, openai_key:, openai_org_id: nil)
       @file_path = file_path
       @matchers = matchers
       @openai_key = openai_key

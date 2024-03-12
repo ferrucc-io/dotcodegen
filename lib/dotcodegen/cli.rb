@@ -40,6 +40,7 @@ module Dotcodegen
       end
     end
 
+    # rubocop:disable Metrics/MethodLength
     def self.build_option_parser(options)
       OptionParser.new do |opts|
         opts.banner = 'Usage: dotcodegen [options] file_path'
@@ -54,6 +55,7 @@ module Dotcodegen
       end
     end
 
+    # rubocop:disable Metrics/AbcSize
     def self.handle_arguments(args, opt_parser, options)
       opt_parser.parse!(args)
       return if options.version || options.init
@@ -63,17 +65,15 @@ module Dotcodegen
       options.openai_key ||= ENV['OPENAI_KEY']
       options.openai_org_id ||= ENV['OPENAI_ORG_ID']
 
-      missing_keys = %w[openai_key openai_org_id].select { |required_key| options.send(required_key).to_s.strip.empty? }
+      return unless options.openai_key.to_s.strip.empty?
 
-      return if missing_keys.empty?
-
-      missing_keys.each do |missing_key|
-        puts "Error: Missing --#{missing_key} flag or #{missing_key.upcase} environment variable."
-      end
+      puts 'Error: Missing --openai_key flag or OPENAI_KEY environment variable.'
 
       puts opt_parser
       exit 1
     end
+    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize
 
     def self.validate_file_path(args, opt_parser)
       return unless args.empty?

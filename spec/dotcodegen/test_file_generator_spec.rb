@@ -23,7 +23,7 @@ RSpec.describe Dotcodegen::TestFileGenerator do
   let(:openai_org_id) { 'test_openai_org_id' }
   let(:codegen_instance) { instance_double(Dotcodegen::TestFileGenerator) }
 
-  subject { described_class.new(file_path:, matchers:, openai_key:, openai_org_id:) }
+  subject { described_class.new(file_path:, matchers:, openai_key:) }
 
   describe '#run' do
     after(:each) { FileUtils.remove_dir('client/', force: true) }

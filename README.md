@@ -40,7 +40,7 @@ codegen --init
 4. Run the codegen command in your terminal:
 
 ```bash
-codegen path/to/the/file/you/want/to/test --openai_key <your_openai_key> --openai_org_id <your_openai_organisation_id>
+codegen path/to/the/file/you/want/to/test --openai_key <your_openai_key>
 ```
 
 
@@ -73,6 +73,13 @@ In order to do that you can add a task to your `tasks.json` file in the `.vscode
 ```
 
 We're currently building a VSCode extension to be able to generate tests directly from your editor. Stay tuned!
+
+## Organisation Id
+CLI takes an optional openai_org_id parameter. Used to specify the organisation to which the user making the API request belongs, especially in cases where the user is part of multiple organisations. This can be important for billing and access control, ensuring that the API usage is attributed to the correct organisation. 
+```bash
+codegen path/to/the/file/you/want/to/test --openai_key <your_openai_key>  --openai_org_id <your_openai_organisation_id>
+```
+
 
 ## How it works
 
