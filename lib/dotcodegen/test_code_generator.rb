@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'openai'
+require_relative 'format_output'
+
 module Dotcodegen
   class TestCodeGenerator
     attr_reader :config, :file_to_test_path, :openai_key, :openai_org_id
@@ -20,7 +22,7 @@ module Dotcodegen
           temperature: 0.7
         }
       )
-      response.dig('choices', 0, 'message', 'content')
+      FormatOutput.format(response.dig('choices', 0, 'message', 'content'))
     end
 
     def test_prompt_text
