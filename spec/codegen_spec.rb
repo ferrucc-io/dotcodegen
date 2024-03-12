@@ -5,7 +5,6 @@ require 'dotcodegen/test_file_generator'
 RSpec.describe 'Main Script' do
   let(:file_path) { 'client/app/components/feature.tsx' }
   let(:openai_key) { 'test_openai_key' }
-  let(:openai_org_id) { 'test_openai_org_id' }
   let(:codegen_instance) { instance_double(Dotcodegen::TestFileGenerator) }
 
   before do
@@ -21,6 +20,7 @@ RSpec.describe 'Main Script' do
   end
 
   it 'initializes and runs the TestFileGenerator with the provided file path, matchers including content, openai key, and optional openai org id' do
+    openai_org_id = 'test_openai_org_id'
     ARGV.replace([file_path, '--openai_key', openai_key, '--openai_org_id', openai_org_id])
     load 'exe/codegen'
     expect(Dotcodegen::TestFileGenerator).to have_received(:new).with(hash_including(file_path: file_path, openai_key: openai_key, openai_org_id: openai_org_id))
