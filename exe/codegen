@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 # The program gets in as an argument the full file path and the matchers config file
-# Usage: exe/codegen client/app/components/feature.tsx --openai_key sk42424242 --openai_org_id org-4242424242424242
+# Usage: exe/codegen client/app/components/feature.tsx --openai_key sk42424242
 
 require_relative '../lib/dotcodegen/cli'
 

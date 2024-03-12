@@ -20,7 +20,6 @@ RSpec.describe Dotcodegen::TestFileGenerator do
   end
   let(:matchers) { [api_matcher, client_matcher] }
   let(:openai_key) { 'test_openai_key' }
-  let(:openai_org_id) { 'test_openai_org_id' }
   let(:codegen_instance) { instance_double(Dotcodegen::TestFileGenerator) }
 
   subject { described_class.new(file_path:, matchers:, openai_key:) }
