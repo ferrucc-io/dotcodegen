@@ -5,12 +5,13 @@ require_relative 'test_code_generator'
 
 module Dotcodegen
   class TestFileGenerator
-    attr_reader :file_path, :matchers, :openai_key
+    attr_reader :file_path, :matchers, :openai_key, :openai_org_id
 
-    def initialize(file_path:, matchers:, openai_key:)
+    def initialize(file_path:, matchers:, openai_key:, openai_org_id: nil)
       @file_path = file_path
       @matchers = matchers
       @openai_key = openai_key
+      @openai_org_id = openai_org_id
     end
 
     def run
@@ -35,8 +36,10 @@ module Dotcodegen
     end
 
     def write_generated_code_to_test_file
-      generated_code = Dotcodegen::TestCodeGenerator.new(config: matcher, file_to_test_path: file_path,
-                                                         openai_key:).generate_test_code
+      generated_code = Dotcodegen::TestCodeGenerator.new(config: matcher,
+                                                         file_to_test_path: file_path,
+                                                         openai_key:,
+                                                         openai_org_id:).generate_test_code
       File.write(test_file_path, generated_code)
     end
 

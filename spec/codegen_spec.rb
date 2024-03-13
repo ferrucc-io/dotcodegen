@@ -19,6 +19,14 @@ RSpec.describe 'Main Script' do
     expect(codegen_instance).to have_received(:run)
   end
 
+  it 'initializes and runs the TestFileGenerator with the provided file path, matchers including content, openai key, and optional openai org id' do
+    openai_org_id = 'test_openai_org_id'
+    ARGV.replace([file_path, '--openai_key', openai_key, '--openai_org_id', openai_org_id])
+    load 'exe/codegen'
+    expect(Dotcodegen::TestFileGenerator).to have_received(:new).with(hash_including(file_path: file_path, openai_key: openai_key, openai_org_id: openai_org_id))
+    expect(codegen_instance).to have_received(:run)
+  end
+
   it 'exits with an error message when the openai_key flag is missing and OPENAI_KEY environment variable is not set' do
     ARGV.replace([file_path])
     expect { load 'exe/codegen' }

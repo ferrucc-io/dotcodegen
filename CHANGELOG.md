@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.1.5] - 2024-03-11
+
+- Add support for specifying the OpenAI organization in the codegen command via the --openai_org_id flag.
+
 ## [0.1.4] - 2024-03-11
 
 - Strip the leading and trailing ``` from the output of the codegen command.
