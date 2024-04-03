@@ -90,12 +90,25 @@ RSpec.describe Dotcodegen::LintCode do
     end
   end
 
+  describe '#ruby_supported?' do
+    let(:ruby_file_checker) { described_class.new(file_path: 'example.rb') }
+    let(:non_ruby_file_checker) { described_class.new(file_path: 'example.txt') }
+
+    it 'returns true for a file path ending with .rb' do
+      expect(ruby_file_checker.ruby_supported?).to be(true)
+    end
+
+    it 'returns false for a file path not ending with .rb' do
+      expect(non_ruby_file_checker.ruby_supported?).to be(false)
+    end
+  end
+
   describe '#lints_file_as_expected' do
     # Rubucop likes to put magic comment # frozen_string_literal: true at the top of files for performace
     # Rubucop likes single quotes be used when string interpolation is not needed
     # Standardrb instead, likes double quotes always for strings
     it "standardrb" do
-      Tempfile.create('tempfile') do |tempfile|
+      Tempfile.create(['tempfile_', '.rb']) do |tempfile|
         initial_content = <<~RUBY
           greeting = "Hello, world!"
           name = "Alice"
@@ -119,12 +132,35 @@ RSpec.describe Dotcodegen::LintCode do
         instance.run
 
         actual_content = File.read(tempfile.path)
-        expect(actual_content).to eq(expected_content) # Use strip to remove any leading/trailing whitespace
+        expect(actual_content).to eq(expected_content) 
+      end
+    end
+
+    it "standardrb but on none ruby file" do
+      Tempfile.create(['tempfile_', '.js']) do |tempfile|
+        initial_content = <<~RUBY
+          greeting = "Hello, world!"
+          name = "Alice"
+          puts "\#{greeting} I'm \#{name}."
+        RUBY
+
+        tempfile.write(initial_content)
+        tempfile.close
+
+        instance = described_class.new(file_path: tempfile.path)
+
+        allow(instance).to receive(:gem_available?).with('rubocop').and_return(false)
+        allow(instance).to receive(:gem_available?).with('standard').and_return(true)
+        
+        instance.run
+
+        actual_content = File.read(tempfile.path)
+        expect(actual_content).to eq(initial_content)
       end
     end
 
     it "rubocop" do
-      Tempfile.create('tempfile') do |tempfile|
+      Tempfile.create(['tempfile_', '.rb']) do |tempfile|
         initial_content = <<~RUBY
           greeting = "Hello, world!"
           name = "Alice"

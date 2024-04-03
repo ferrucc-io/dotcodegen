@@ -41,7 +41,6 @@ RSpec.describe Dotcodegen::TestFileGenerator do
     context 'when test file does not exist' do
       it 'creates a test file and writes generated code once' do
         allow(File).to receive(:exist?).and_return(false)
-        allow_any_instance_of(Dotcodegen::LintCode).to receive(:gem_available?).and_return(false)
         expect(FileUtils).to receive(:mkdir_p).with('tmp/codegen_spec')
         allow(Dotcodegen::TestCodeGenerator).to receive_message_chain(:new, :generate_test_code).and_return('Mocked generated code')
         expect(File).to receive(:write).with('tmp/codegen_spec/feature.test.tsx', '').once
@@ -53,7 +52,6 @@ RSpec.describe Dotcodegen::TestFileGenerator do
     context 'when test file already exists' do
       it 'does not create a test file but writes generated code' do
         allow(File).to receive(:exist?).with('tmp/codegen_spec/feature.test.tsx').and_return(true)
-        allow_any_instance_of(Dotcodegen::LintCode).to receive(:gem_available?).and_return(false)
         expect(FileUtils).not_to receive(:mkdir_p)
         allow(Dotcodegen::TestCodeGenerator).to receive_message_chain(:new, :generate_test_code).and_return('Mocked generated code')
         expect(File).to receive(:write).with('tmp/codegen_spec/feature.test.tsx', 'Mocked generated code').once

@@ -2,6 +2,7 @@
 
 require 'fileutils'
 require_relative 'test_code_generator'
+require_relative 'lint_code'
 
 module Dotcodegen
   class TestFileGenerator
@@ -42,7 +43,7 @@ module Dotcodegen
                                                          openai_key:,
                                                          openai_org_id:).generate_test_code
       File.write(test_file_path, generated_code)
-
+      
       LintCode.new(file_path: test_file_path).run
     end
 
