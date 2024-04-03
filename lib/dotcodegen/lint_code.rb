@@ -7,8 +7,6 @@ module Dotcodegen
     end
 
     def ruby_supported?
-      puts "@file_path"
-      puts @file_path
       @file_path.end_with? ".rb"
     end
 

@@ -2,7 +2,6 @@
 
 require 'fileutils'
 require_relative 'test_code_generator'
-require_relative 'lint_code'
 
 module Dotcodegen
   class TestFileGenerator
