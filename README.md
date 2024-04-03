@@ -44,7 +44,7 @@ codegen path/to/the/file/you/want/to/test --openai_key <your_openai_key>
 ```
 
 
-5. That's it! You're ready to start generating tests for your codebase. If testing .rb code, then Rubucop or StandardRB will automatically be applied, if its set up in your app folder.
+5. That's it! You're ready to start generating tests for your codebase. 
 
 
 **Extra**:
@@ -79,6 +79,9 @@ CLI takes an optional openai_org_id parameter. Used to specify the organisation 
 ```bash
 codegen path/to/the/file/you/want/to/test --openai_key <your_openai_key>  --openai_org_id <your_openai_organisation_id>
 ```
+
+## Linting 
+When testing .rb code, then Rubocop or StandardRB will automatically be applied to the generated test code, if these gems are in your GemFile. For Rubocop, a .rubocop.yml needs to be on the top-level also. If both Rubocop and StandardRB are correctly set up, only StandardRB runs against the generated test code.
 
 
 ## How it works

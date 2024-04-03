@@ -43,12 +43,12 @@ RSpec.describe Dotcodegen::LintCode do
       end
     end
 
-    context 'when both RuboCop and Standard Exist' do
-      it 'runs both linting commands' do
+    context 'when both RuboCop(with its config file) and StandardRB Exists' do
+      it 'runs only one of them' do
         allow(lint_code).to receive(:gem_available?).with('standard').and_return(true)
         allow(lint_code).to receive(:gem_available?).with('rubocop').and_return(true)
         allow(lint_code).to receive(:rubocop_config_exists?).and_return(true)
-        expect(lint_code).to receive(:system).with(any_args).exactly(2).times
+        expect(lint_code).to receive(:system).with(any_args).exactly(1).time
         lint_code.run
       end
     end

@@ -14,11 +14,10 @@ module Dotcodegen
       if ruby_supported?
         if gem_available?('standard')
           standardrb_code
-        end
 
         # Attempt to lint with RuboCop if the gem is available and .rubocop.yml exists
         # StandardRB includes Rubocop by default. Hence the presence of .rubocop.yml is best indication that Rubocop is in active use
-        if gem_available?('rubocop') && rubocop_config_exists?
+        elsif gem_available?('rubocop') && rubocop_config_exists?
           rubocop_code
         end
       end
