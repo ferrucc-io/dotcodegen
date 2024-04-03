@@ -44,7 +44,7 @@ codegen path/to/the/file/you/want/to/test --openai_key <your_openai_key>
 ```
 
 
-5. That's it! You're ready to start generating tests for your codebase.
+5. That's it! You're ready to start generating tests for your codebase. If testing .rb code, then Rubucop or StandardRB will automatically be applied, if its set up in your app folder.
 
 
 **Extra**:
