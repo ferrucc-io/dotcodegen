@@ -59,6 +59,42 @@ RSpec.describe Dotcodegen::TestFileGenerator do
     end
   end
 
+  describe '#run with linting' do
+    after(:each) { FileUtils.remove_dir('client/', force: true) }
+    let(:file_path) { 'spec/fixtures/feature.rb' }
+    let(:client_matcher) do
+      {
+        'regex' => 'spec/fixtures/.*\.rb',
+        'test_file_suffix' => '.test.rb',
+        'root_path' => 'spec/fixtures/',
+        'test_root_path' => 'tmp/codegen_spec/',
+        'instructions' => 'instructions/ruby.md'
+      }
+    end
+
+    context 'when test file does not exist' do
+      it 'creates a test file and writes generated code once' do
+        allow(File).to receive(:exist?).with(any_args).and_return(false)
+        expect(FileUtils).to receive(:mkdir_p).with('tmp/codegen_spec')
+        allow(Dotcodegen::TestCodeGenerator).to receive_message_chain(:new, :generate_test_code).and_return('Mocked generated code')
+        expect(File).to receive(:write).with('tmp/codegen_spec/feature.test.rb', '').once
+        expect(File).to receive(:write).with('tmp/codegen_spec/feature.test.rb', 'Mocked generated code').once
+        subject.run
+      end
+    end
+
+    context 'when test file already exists' do
+      it 'does not create a test file but writes generated code' do
+        allow(File).to receive(:exist?).with(".rubocop.yml").and_return(false)
+        allow(File).to receive(:exist?).with('tmp/codegen_spec/feature.test.rb').and_return(true)
+        expect(FileUtils).not_to receive(:mkdir_p)
+        allow(Dotcodegen::TestCodeGenerator).to receive_message_chain(:new, :generate_test_code).and_return('Mocked generated code')
+        expect(File).to receive(:write).with('tmp/codegen_spec/feature.test.rb', 'Mocked generated code').once
+        subject.run
+      end
+    end
+  end
+
   describe '#matcher' do
     it 'returns the matching regex for the frontend' do
       expect(subject.matcher).to eq(client_matcher)
