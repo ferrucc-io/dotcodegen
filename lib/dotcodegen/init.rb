@@ -17,7 +17,7 @@ module Dotcodegen
         FileUtils.cp(md_file, instructions_dir)
       end
 
-      puts 'Codegen initialized.'
+      Rails.logger.info 'Codegen initialized.'
       exit
     end
     # rubocop:enable Metrics/MethodLength

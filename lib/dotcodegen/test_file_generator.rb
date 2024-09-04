@@ -16,20 +16,20 @@ module Dotcodegen
     end
 
     def run
-      puts "Finding matcher for #{file_path}..."
-      return puts "No matcher found for #{file_path}" unless matcher
+      Rails.logger.info "Finding matcher for #{file_path}..."
+      return Rails.logger.info("No matcher found for #{file_path}") unless matcher
 
-      puts "Test file path: #{test_file_path}"
+      Rails.logger.info "Test file path: #{test_file_path}"
       ensure_test_file_presence
 
       write_generated_code_to_test_file
       open_test_file_in_editor unless $running_tests
 
-      puts 'Running codegen...'
+      Rails.logger.info 'Running codegen...'
     end
 
     def ensure_test_file_presence
-      puts "Creating test file if it doesn't exist..."
+      Rails.logger.info "Creating test file if it doesn't exist..."
       return if File.exist?(test_file_path)
 
       FileUtils.mkdir_p(File.dirname(test_file_path))
