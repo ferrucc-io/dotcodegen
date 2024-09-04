@@ -29,7 +29,7 @@ module Dotcodegen
     end
 
     def self.version
-      Rails.logger.info "Dotcodegen version #{Dotcodegen::VERSION}"
+      puts "Dotcodegen version #{Dotcodegen::VERSION}"
       exit
     end
 
@@ -49,7 +49,7 @@ module Dotcodegen
         opts.on('--init', 'Initialize a .codegen configuration in the current directory') { options.init = true }
         opts.on('--version', 'Show version') { options.version = true }
         opts.on_tail('-h', '--help', 'Show this message') do
-          Rails.logger.info opts
+          puts opts
           exit
         end
       end
@@ -67,9 +67,9 @@ module Dotcodegen
 
       return unless options.openai_key.to_s.strip.empty?
 
-      Rails.logger.info 'Error: Missing --openai_key flag or OPENAI_KEY environment variable.'
+      puts 'Error: Missing --openai_key flag or OPENAI_KEY environment variable.'
 
-      Rails.logger.info opt_parser
+      puts opt_parser
       exit 1
     end
     # rubocop:enable Metrics/MethodLength
@@ -78,8 +78,8 @@ module Dotcodegen
     def self.validate_file_path(args, opt_parser)
       return unless args.empty?
 
-      Rails.logger.info 'Error: Missing file path.'
-      Rails.logger.info opt_parser
+      puts 'Error: Missing file path.'
+      puts opt_parser
       exit 1
     end
   end

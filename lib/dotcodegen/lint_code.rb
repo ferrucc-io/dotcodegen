@@ -25,12 +25,12 @@ module Dotcodegen
 
 
     def standardrb_code
-      Rails.logger.info "Linting: StandardRB"
+      puts "Linting: StandardRB"
       system("standardrb --fix-unsafely #{@file_path}")
     end
 
     def rubocop_code
-      Rails.logger.info "Linting: Rubocop"
+      puts "Linting: Rubocop"
       system("rubocop --autocorrect-all --disable-pending-cops #{@file_path}")
     end
 
