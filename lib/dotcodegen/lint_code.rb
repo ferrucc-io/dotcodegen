@@ -23,7 +23,6 @@ module Dotcodegen
       end
     end
 
-
     def standardrb_code
       puts "Linting: StandardRB"
       system("standardrb --fix-unsafely #{@file_path}")

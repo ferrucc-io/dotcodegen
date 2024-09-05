@@ -17,8 +17,9 @@ module Dotcodegen
     def generate_test_code
       response = openai_client.chat(
         parameters: {
-          model: 'gpt-4-turbo-preview',
+          model: 'gpt-4o',
           messages: [{ role: 'user', content: test_prompt_text }], # Required.
+          response_format: { type: "json_object" },
           temperature: 0.7
         }
       )
