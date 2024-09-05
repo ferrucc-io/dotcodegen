@@ -19,6 +19,7 @@ module Dotcodegen
         parameters: {
           model: 'gpt-4-turbo-preview',
           messages: [{ role: 'user', content: test_prompt_text }], # Required.
+          response_format: { type: "json_object" },
           temperature: 0.7
         }
       )
