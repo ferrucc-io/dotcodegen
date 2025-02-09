@@ -2,6 +2,7 @@
 [![Gem Version](https://badge.fury.io/rb/dotcodegen.svg)](https://badge.fury.io/rb/dotcodegen) [![Test Coverage](https://api.codeclimate.com/v1/badges/8a9e8ffdf8f3c5322196/test_coverage)](https://codeclimate.com/github/ferrucc-io/dotcodegen/test_coverage)
 
 
+**DEPRECATION NOTICE - This project is no longer maintained. See [.cursorrules](https://docs.cursor.com/context/rules-for-ai) as a more natively integrated way of passing file path specific context to LLMs**
 Never write a test from scratch again. Automatically generate tests for any file you open in your codebase.
 
 Keep your team up to date with the latest best practices and conventions you adopt. Customize the templates to fit your team's needs.
