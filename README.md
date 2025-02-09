@@ -3,6 +3,7 @@
 
 
 **DEPRECATION NOTICE - This project is no longer maintained. See [.cursorrules](https://docs.cursor.com/context/rules-for-ai) as a more natively integrated way of passing file path specific context to LLMs**
+
 Never write a test from scratch again. Automatically generate tests for any file you open in your codebase.
 
 Keep your team up to date with the latest best practices and conventions you adopt. Customize the templates to fit your team's needs.
